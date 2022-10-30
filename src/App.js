@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import './sass/main.scss'
 import './App.css';
+import Header from './components/Header';
+import NavBar from './components/NavBar';
+import Content from './components/Content';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const searchFilter = (filter) => {
+
+  console.log("Filtered by -> " , filter);
+}
+
+  return <>
+  <Header />
+  <NavBar searchFilter={searchFilter}/>
+  <Content />
+  </>
 }
 
 export default App;
