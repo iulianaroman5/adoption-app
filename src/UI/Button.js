@@ -1,7 +1,7 @@
 const Button = (props) => {
     return <button
         className={props.class}
-        type={props.type || "submit"}
+        type={props.type ?? "submit"}
         onClick={props.onClick}
         disabled={props.disabled}
     >

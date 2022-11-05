@@ -47,3 +47,26 @@
     font-weight: 700;
     font-size: 17px;
 }
+
+.add-button {
+    width: auto;
+    height: 30px;
+    margin-top: 45%;
+    border-radius: 15px;
+    border: 0;
+    font-size: 20px;
+    font-family: "Intim";
+    background-color: #F9E8C9;
+    font-weight: 700;
+    color: #EC6B0E;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+
+    &:hover{
+        background-color:  #EC6B0E;
+        color: #F9E8C9;
+    }
+}
