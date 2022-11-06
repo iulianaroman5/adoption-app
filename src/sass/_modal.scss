@@ -4,7 +4,7 @@
     margin-right: 10%;
     height: 700px;
     border-radius: 40px;
-    background-color: #ef9a5c;
+    background-color: #deb191;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -37,21 +37,21 @@ label{
     padding: 1rem 1.75rem;
     border-radius: 25px;
     border: 0;
-    background-color: purple;
+    background-color: #EC6B0E;
     font-weight: 700;
     font-size: 20px;
     color: #F9E8C9;
 
     &:hover{
-        box-shadow: 0px 0px 20px 4px gold;
-        background-color: red;
+        box-shadow: 0px 0px 20px 4px rgb(240, 170, 64);
+        background-color: rgba(235, 114, 28, 0.918);
     }
     
 }
 
 .inputs-first{
     margin-bottom: 15px;
-    width: 450px;
+    width: 400px;
     
 }
 
@@ -63,7 +63,7 @@ label{
     input[type="file"]  {
         padding: 1rem;
         font-size: 20px;
-        width: 100%;
+        width: 80%;
         display: block;
         height: 40px;
     }
