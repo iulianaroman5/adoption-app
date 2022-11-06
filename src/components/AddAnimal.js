@@ -3,21 +3,24 @@ import { Formik, Form } from 'formik';
 import Button from "../UI/Button";
 import { useNavigate } from "react-router-dom";
 import FileInput from "../UI/FileInput";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { addNewAnimal } from "../services/services";
 
 const AddAnimal = (props) => {
 
     const nav = useNavigate();
-    const [images, setImages] =useState([]);
+    const [images, setImages] = useState([]);
 
     return <>
         <div className="animal-container">
             <Formik
-                initialValues={{ name: "", }}
+                initialValues={{ name: "", age: "", gender: "", breed: "", images: [] }}
                 onSubmit={(values) => {
-                    console.log(values);
-                    nav('/')
+                    values.images= images;
+                    addNewAnimal(values).then(() => {
+                        nav('/');
+                    }).catch(err => console.log(err));
+                    
 
                 }}
             >
@@ -64,9 +67,9 @@ const AddAnimal = (props) => {
                             </div>
                             <div className="inputs-2 col" >
                                 <FileInput
-                                 images={images} 
-                                 setImages={setImages}
-                                  />
+                                    images={images}
+                                    setImages={setImages}
+                                />
                             </div>
                         </div>
                         <Button

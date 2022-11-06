@@ -1,27 +1,29 @@
+import { getBase64 } from "../utils/getBase64";
 
 
 const FileInput = props => {
-    const reader = new FileReader();
-    const {setImages, images} = props;
-    
-    const handleChange = (event) => {
-        console.log(event.target.files);
-        const files = event.target.files;
-        console.log(files.length)
-        for( const file of files){
-            let image =URL.createObjectURL(file);
-            console.log(image, "" ,images)
-            setImages((prev) => [...prev, image]);
-        }
-        
+    const { setImages, images } = props;
 
-        
+    const handleChange = (event) => {
+        const files = event.target.files;
+        for (const file of files) {
+            getBase64(file).then(result => {
+                setImages((prev) => [...prev, result]);
+            }
+            ).catch(e => console.log(e));
+
+        }
+
+
+
     }
-    console.log(images)
-    return <> 
-    <input type={"file"} multiple={true} onChange={ (event) => handleChange(event)} />
-    {images && images.map((img, index) => <img key={index} src={img} alt={"Current choosed images"} />)}
-    
+    return <>
+        <input type={"file"} multiple={true} onChange={(event) => handleChange(event)} />
+        <div className="overflow-auto">
+            {images && images.map((img, index) => <img key={index} src={img} alt={"Current choosed images"} />)}
+
+        </div>
+
     </>
 }
 
