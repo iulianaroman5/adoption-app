@@ -2,59 +2,70 @@ import Card from './Card';
 import plusImg from "../assets/+.svg";
 import Button from "../UI/Button";
 import { useNavigate } from "react-router-dom";
-import { getAnimals } from '../services/services';
-import { useEffect, useState } from 'react';
-
+import { deleteAnimal, getAnimals } from '../services/services';
+import { useEffect, useState, useContext } from 'react';
+import { AuthContext } from '../context/Auth';
 
 const Content = (props) => {
     const navigate = useNavigate();
-    const [list, setList] = useState([]);
-    const animalBreeds = new Set();
 
-    
-    useEffect( () => {
+    const list= props.list;
+    const setList = props.setList;
+
+    const { currentUser } = useContext(AuthContext);
+
+    const { categories } = props;
+
+    const handleClose = (event, id) => {
+        event.preventDefault();
+        deleteAnimal(id);
+
+    }
+
+    useEffect(() => {
         getAnimals()
-        .then(result => {
-            result.forEach(el =>{ 
-                console.log(el.breed);
-            animalBreeds.add(el.breed);
-            }
-                );
-            setList(result);
-        })
-        .catch(err => console.log(err));
+            .then(result => {
+                setList(result);
 
-    },[]);
+            })
+            .catch(err => console.log(err));
+    }, []);
+
+
+    useEffect(() => {
+        categories(new Set(list.map(el => el.type)))
+    }, [list])
 
 
     const goToAddAnimal = () => {
         navigate('add-animal')
+
     }
 
-    console.log(animalBreeds);
 
     return (<>
-       
+
 
         <div className="content-box">
-            <div className='card1 first'>
+            {currentUser && <div className='card1 first'>
                 <img src={plusImg} />
                 <Button
                     class={"add-button"}
                     btnName={"Add animal"}
                     onClick={goToAddAnimal}
                 />
-            </div>
-            {list.length > 0 && list.map((obj) => <Card
+            </div>}
+            {list.length > 0 && list.map((obj, index) => <Card
                 breed={obj.breed}
                 age={obj.age}
                 name={obj.name}
                 gender={obj.gender}
                 images={obj.images}
-                key={obj.id}
+                key={obj.id + index}
+                handleClose={(e) => handleClose(e, obj.id)}
             />)}
         </div>
-      
+
     </>
     );
 }

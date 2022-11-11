@@ -1,41 +1,36 @@
 import './sass/main.scss'
 import './App.css';
 import Header from './components/Header';
-import NavBar from './components/NavBar';
-import Content from './components/Content';
+import Home from './components/Home';
+import Login from './components/Login';
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AddAnimal from './components/AddAnimal';
+import PrivateRoute from './components/PrivateRoute';
+import { AuthProvider } from './context/Auth';
 
 
 
 function App() {
 
-  // const [show, setShow] = useState(false);
-
-  // const handleCloseModal = () => setShow(false);
-
-  const searchFilter = (filter) => {
-
-    console.log("Filtered by -> ", filter);
-  }
 
   return <>
-    <Header />
-    {/* <AddModal
-            display={show}
-            hide={handleCloseModal}
+    <AuthProvider>
 
-        /> */}
-    <BrowserRouter>
-      <Routes >
-        <Route path='/' element={<>
-          <NavBar searchFilter={searchFilter} />
-          <Content  />
-        </>} />
-        <Route path='/add-animal' element={<AddAnimal />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path={'/'}
+            element={<Home />}
+          />
+          <Route path='/add-animal' element={<PrivateRoute >
+            <AddAnimal />
+          </PrivateRoute>} />
+          <Route path='/login' element={<Login />} />
+          <Route path="*" element={<Navigate to="/" />} />
+
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
 
 
 
