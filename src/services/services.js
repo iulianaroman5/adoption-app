@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { db } from '../configuration/firebase';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
 
 export const COLLECTION = collection(db, 'animals');
 
@@ -23,4 +23,11 @@ export async function getAnimals() {
 
 export function getSpecificAnimal(id) {
     // todo
+}
+
+export async function deleteAnimal(id) {
+    const dataDoc = doc(db, 'animals', id)
+    await deleteDoc(dataDoc).then(() => {
+        window.location.reload()
+    });
 }

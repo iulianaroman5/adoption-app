@@ -3,10 +3,10 @@ import { Formik, Form } from 'formik';
 import Button from "../UI/Button";
 import { useNavigate } from "react-router-dom";
 import FileInput from "../UI/FileInput";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { addNewAnimal } from "../services/services";
 
-const AddAnimal = (props) => {
+const AddAnimal = () => {
 
     const nav = useNavigate();
     const [images, setImages] = useState([]);
@@ -14,13 +14,12 @@ const AddAnimal = (props) => {
     return <>
         <div className="animal-container">
             <Formik
-                initialValues={{ name: "", age: "", gender: "", breed: "", images: [] }}
+                initialValues={{ name: "", age: "", gender: "", breed: "", type:'' , images: [] }}
                 onSubmit={(values) => {
-                    values.images= images;
+                    values.images = images;
                     addNewAnimal(values).then(() => {
                         nav('/');
                     }).catch(err => console.log(err));
-                    
 
                 }}
             >
@@ -64,6 +63,14 @@ const AddAnimal = (props) => {
                                     onChange={handleChange}
                                     value={values.age}
                                 />
+                                <Input
+                                    label={'Type of animal'}
+                                    name={"type"}
+                                    placeholder={"Type of animal"}
+                                    type={"text"}
+                                    onChange={handleChange}
+                                    value={values.type}
+                                />
                             </div>
                             <div className="inputs-2 col" >
                                 <FileInput
@@ -77,6 +84,12 @@ const AddAnimal = (props) => {
                             class={"save-new-animal"}
                             type={'submit'}
                             onClick={() => { }}
+                        />
+                        <Button
+                            btnName={"Close"}
+                            class={"save-new-animal"}
+                            type={"button"}
+                            onClick={() => nav(-1)}
                         />
                     </Form>
                 )}

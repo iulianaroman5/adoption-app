@@ -9,7 +9,7 @@ const Input = (props) => {
             type={type}
             value={value}
             name={name}
-            className="form-control"
+            className={ props.class ?? "form-control" } 
             placeholder={placeholder}
             onChange={onChange}
         />

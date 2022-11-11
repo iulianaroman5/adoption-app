@@ -1,0 +1,92 @@
+.login-container {
+    width: auto;
+    height:auto;
+    margin-left: 36%;
+    margin-top: 3rem;
+    padding: 0 4rem;
+    padding-bottom: 3rem;
+    padding-top: 1rem;
+    margin-right: auto;
+    position: absolute;
+    display: flex;
+    border-radius: 45px;
+    flex-direction: column;
+    box-shadow: 0px 0 20px 8px #EC6B0E;
+    background-color: #fbd7bde7;
+
+    .login-input-fields{
+        height: 25px;
+        width: 300px;
+        padding: .5rem;
+        margin-top: 20px;
+        border: 3px solid rgb(165, 85, 42);
+        border-radius: 35px;
+        font-size: 17px;
+        background-color: #fbd7bde7;
+
+    }
+
+    label {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    > h1 {
+        display: flex;
+        justify-content: center;
+        font-family: 'Intim';
+    }
+
+    .login-buttons{
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+    
+
+        p {
+            font-weight: 500;
+            font-size: 17px;
+        }
+
+        .login-button{
+            display: flex;
+            width: 100%; 
+            justify-content: center;
+            padding: .5rem; 
+            font-size: 15px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            border: none; 
+            background-color: #f48739; 
+            font-weight: 600;
+            
+
+        }
+    }
+
+
+
+}
+
+.background-img{
+    background-image: url('../assets/team.png');
+    background-repeat: no-repeat;
+    background-size: 100%; 
+    background-position: center;
+    height: 969px;
+    opacity: 70%;
+    overflow: auto;
+}
+
+.inputs{
+    // border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10rem;
+    position: absolute;
+    margin-left: 90%;
+    border-radius: 5px;
+
+  
+}
+

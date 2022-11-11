@@ -4,6 +4,7 @@ const Button = (props) => {
         type={props.type ?? "submit"}
         onClick={props.onClick}
         disabled={props.disabled}
+        value={props.value}
     >
         {props.btnName}
     </button>
