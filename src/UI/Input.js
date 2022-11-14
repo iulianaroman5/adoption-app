@@ -12,6 +12,7 @@ const Input = (props) => {
             className={ props.class ?? "form-control" } 
             placeholder={placeholder}
             onChange={onChange}
+            disabled={props.disabled}
         />
     </>
 }

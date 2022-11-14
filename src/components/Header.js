@@ -14,6 +14,9 @@ const Header = () => {
     const auth = getAuth(app);
     const nav = useNavigate();
 
+    // const userPhoto = currentUser.photoUrl();
+    // console.log(userPhoto);
+
     const handleLogEvent = (event) => {
         event.preventDefault();
         if (currentUser) {
@@ -34,9 +37,14 @@ const Header = () => {
                 <img src={profileImg} alt="user-profile-img" />
                 <Button
                     class={'header-button'}
-                    disabled={true}
-                    onClick={() => { }}
-                    btnName={"Profile"}
+                    disabled={currentUser ? true : false}
+                    onClick={() => {
+                        console.log(currentUser)
+                        if(!currentUser){
+                            nav('/sign-up')
+                        }
+                     }}
+                    btnName={currentUser ? "Profile" : 'Sign-up'}
 
                 />
                 <Button

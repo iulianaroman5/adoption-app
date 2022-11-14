@@ -14,6 +14,8 @@ const NavBar = (props) => {
 
     return <>
         <nav className="navbar">
+        <li><Button btnName={'Show all'} onClick={() => window.location.reload()} class='nav-btn'/></li>
+
             {animalList.length > 0 && animalList.map((el, index) =>
                 <li key={index} className="list-element">
                     <Button btnName={el} onClick={filter} class='nav-btn' value={el}/>

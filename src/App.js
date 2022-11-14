@@ -7,16 +7,16 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AddAnimal from './components/AddAnimal';
 import PrivateRoute from './components/PrivateRoute';
-import { AuthProvider } from './context/Auth';
-
+import { AuthProvider, useCtx } from './context/Auth';
+import AdoptMe from './components/AdoptMe';
+import SignUp from './components/SignUp';
 
 
 function App() {
 
+  const {adoptAnimal} = useCtx();
 
   return <>
-    <AuthProvider>
-
       <BrowserRouter>
         <Routes>
           <Route path={'/'}
@@ -26,13 +26,15 @@ function App() {
             <AddAnimal />
           </PrivateRoute>} />
           <Route path='/login' element={<Login />} />
+          <Route path='/sign-up' element={<SignUp />} />
           <Route path="*" element={<Navigate to="/" />} />
-
+          <Route path='/adopt-me' element={
+            <PrivateRoute >
+              <AdoptMe data={adoptAnimal} />
+            </PrivateRoute>} 
+            />
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
-
-
 
   </>
 }

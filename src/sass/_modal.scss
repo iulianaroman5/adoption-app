@@ -49,6 +49,24 @@ label{
     
 }
 
+
+.close-action{
+    padding: 1rem 1.75rem;
+    border-radius: 25px;
+    border: 0;
+    background-color: #EC6B0E;
+    font-weight: 700;
+    font-size: 20px;
+    color: #F9E8C9;
+    margin-left: 35px;
+
+    &:hover{
+        box-shadow: 0px 0px 20px 4px rgb(240, 170, 64);
+        background-color: rgba(235, 114, 28, 0.918);
+    }
+    
+}
+
 .inputs-first{
     margin-bottom: 15px;
     width: 400px;
@@ -75,4 +93,9 @@ label{
         margin-right: 10px;
         margin-top: 10px;
     }
+}
+
+
+.main-modal{
+
 }

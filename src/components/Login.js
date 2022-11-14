@@ -3,7 +3,7 @@ import Button from "../UI/Button";
 import Input from "../UI/Input";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import app from "../configuration/firebase";
+import app, { singInWithGoogle } from "../configuration/firebase";
 
 
 const Login = () => {
@@ -65,8 +65,13 @@ const Login = () => {
                             <Button
                                 btnName={"Sign-up"}
                                 class={'login-button'}
+                                onClick={() => nav('/sign-up')}
                             />
-                            
+                            {/* <Button 
+                                btnName={'Sign-up with Google'}
+                                class={'login-button'}
+                                onClick={() => singInWithGoogle }
+                                /> */}
                         </div>
                         </div>
                        

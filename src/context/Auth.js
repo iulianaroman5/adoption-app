@@ -1,5 +1,5 @@
 import { getAuth } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 export const AuthContext = React.createContext();
 
@@ -7,7 +7,8 @@ export const AuthProvider = ({ children }) => {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [pending, setPending] = useState(true);
-  const [nextAction, setNextAction] = useState("");
+
+  const [adoptAnimal, setAdoptAnimal] =useState({});
 
 
   useEffect(() => {
@@ -15,7 +16,6 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(user)
       setPending(false)
     });
-    // console.log(currentUser)
   }, []);
 
   if(pending){
@@ -26,11 +26,21 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         currentUser,
-        nextAction,
-        setNextAction
+        adoptAnimal,
+        setAdoptAnimal
+        
       }}
     >
       {children}
     </AuthContext.Provider>
   );
 };
+
+export function useCtx (){
+  const ctx = useContext(AuthContext);
+  if( ctx === undefined){
+    throw new Error ('Error')
+  }
+
+  return ctx;
+}

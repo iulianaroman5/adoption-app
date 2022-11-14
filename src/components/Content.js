@@ -4,16 +4,19 @@ import Button from "../UI/Button";
 import { useNavigate } from "react-router-dom";
 import { deleteAnimal, getAnimals } from '../services/services';
 import { useEffect, useState, useContext } from 'react';
-import { AuthContext } from '../context/Auth';
+import { AuthContext, useCtx } from '../context/Auth';
 
 const Content = (props) => {
+
+
     const navigate = useNavigate();
 
-    const list= props.list;
+    const list = props.list;
     const setList = props.setList;
 
-    const { currentUser } = useContext(AuthContext);
-
+    const {currentUser, adoptAnimal, setAdoptAnimal} = useContext(AuthContext);
+ 
+    
     const { categories } = props;
 
     const handleClose = (event, id) => {
@@ -33,13 +36,21 @@ const Content = (props) => {
 
 
     useEffect(() => {
-        categories(new Set(list.map(el => el.type)))
+        categories(new Set(list.map(el => el.type)));
     }, [list])
 
 
     const goToAddAnimal = () => {
         navigate('add-animal')
 
+    }
+
+    const handleAdoptMe = (event,animal) => {
+        event.preventDefault();
+        setAdoptAnimal(animal);
+        adoptAnimal && navigate('adopt-me');
+         
+        
     }
 
 
@@ -63,6 +74,7 @@ const Content = (props) => {
                 images={obj.images}
                 key={obj.id + index}
                 handleClose={(e) => handleClose(e, obj.id)}
+                adoptMe={(event) => handleAdoptMe(event, obj)}
             />)}
         </div>
 

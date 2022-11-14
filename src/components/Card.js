@@ -1,11 +1,23 @@
 import paw from "../assets/paw.svg";
 import unknown from '../assets/unknown.png';
 import close from '../assets/X.svg';
+import Button from '../UI/Button';
 
 const Card = (props) =>{
+
+
 return (
     <div className="card1">
+        <section>
         <img src={props?.images[0] ?? unknown} alt="pet"/>
+        <Button
+         btnName={'Adopt me'}
+         onClick={props.adoptMe}
+         class={'adopt-me-button'}
+         type={'button'}
+         
+        />
+        </section>
         <section className="pet-details" >
             <p><img src={paw} alt="paw"/><span>Name: {props.name}</span> <img onClick={props.handleClose} id="close" src={close}/></p>
             <p><img src={paw} alt="paw"/><span>Gender: {props.gender}</span></p>

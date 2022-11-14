@@ -31,3 +31,5 @@ export async function deleteAnimal(id) {
         window.location.reload()
     });
 }
+
+

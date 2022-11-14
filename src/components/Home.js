@@ -11,13 +11,10 @@ const Home = () => {
 
   const searchFilter = (filter) => {
     filter = filter.toLowerCase();
-    console.log("filtru  -> ", filter);
     const filteredList = Array.from(list).filter(el => el.type === filter);
     setList(filteredList);
-    console.log("Filtered by -> ", filteredList);
   }
 
-  console.log("List-> ", list);
 
     return <>
         <Header />

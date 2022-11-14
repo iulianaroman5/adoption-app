@@ -87,7 +87,7 @@ const AddAnimal = () => {
                         />
                         <Button
                             btnName={"Close"}
-                            class={"save-new-animal"}
+                            class={"close-action"}
                             type={"button"}
                             onClick={() => nav(-1)}
                         />
